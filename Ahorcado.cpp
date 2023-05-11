@@ -7,7 +7,7 @@ void CleanMirror();
 void PlayGame(int lifes);
 void Draw(int lifes);
 string words[] = {"programador","videojuego","manzana","gachapon","libro","jugador","codigo","lampara","pelota","lobo"};
-string number[] = {"0","1","2","3","4","5","6","7","8","9"};
+string invalid[] = {"0","1","2","3","4","5","6","7","8","9"};
 string wordP , fallidas; 
 char select;
 int random;
@@ -55,8 +55,8 @@ void PlayGame(int lifes)
 			cout << "  Progress " << wordP << endl;
 			cout << words[random] << endl;
 			cout << "enter a letter(las palabra estan en español y en minusculas): ";
-			cin >> select;
-		} while (number->find(select));
+			cin >> select;			
+		}while(!((select >= 'a' && select <= 'z') || (select >= 'A' && select <= 'Z')));
 		correct = false;
 		for (int i = 0; i < (int)words[random].size(); i++) {
 			if (words[random][i]==select) {
@@ -64,6 +64,7 @@ void PlayGame(int lifes)
 				correct = true;
 			}
 		}
+
 		if (!correct) {
 			lifes--;
 			fallidas += select;
